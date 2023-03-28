@@ -1,6 +1,9 @@
-const arr = ["Nkaka", "Edson","Victor", "Aldo"];
+const people = ["Nkaka", "Edson","Victor", "Aldo"];
+const ages = [34,5,645,345]
 
-console.log(arr)
 
-
-module.exports = "Hello!"
+;
+module.exports = {
+    people, 
+    ages
+}
