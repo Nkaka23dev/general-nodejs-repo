@@ -3,10 +3,8 @@ const fs = require("fs")
 const _ = require("lodash")
 
 const server = http.createServer((req, res) => {
-    console.log(_.random(0,100))
+    console.log(_.random(0, 100))
     res.setHeader('Content-Type', 'text/html');
-
-
     let path = "./views/";
 
     switch (req.url) {
@@ -28,7 +26,6 @@ const server = http.createServer((req, res) => {
             res.statusCode = 404
             break
     }
-
     fs.readFile(path, (err, data) => {
         if (err) {
             console.log("Error occured", err);
