@@ -1,32 +1,25 @@
-const express = require('express');
-const morgan = require('morgan')
+const fs = require('fs');
 
-const app = express();
-
-app.listen(8000)
-
-app.use(morgan('dev'))
-// ejs setting 
-
-app.use(express.static('public'))
-
-app.set("view engine", "ejs")
-
-app.get('/', (req, res) => {
-    const blogs = [
-        { title: 'Yoshi Find Eggs', snippet: "Lorem  sit amet consectetur adipisicing elit." },
-        { title: 'Yoshi Find Eggs', snippet: "Lorem  sit amet consectetur adipisicing elit." },
-        { title: 'Yoshi Find Eggs', snippet: "Lorem  sit amet consectetur adipisicing elit." }
-    ]
-    res.render('index', { title: "Home", blogs })
+fs.readFile("./docs/blog1.txt", (err, data) => {
+    if (err) {
+        console.log("Error! Check the directory please!")
+    } else {
+        console.log(data.toString())
+    }
 })
 
-app.get('/about', (req, res) => {
-    res.render('about', { title: "About" })
+fs.writeFile("./docs/blog1.txt", "Hello! You will replace the text", (err, data) => {
+  if(err){
+    console.log(err)
+  }else{
+    console.log("Data writen success!")
+  }
 })
-app.get('/blogs/create', (req, res) => {
-    res.render('create', { title: "Create" })
-})
-app.use((req, res) => {
-    res.status(404).render('404', { title: "404" })
-})
+
+fs.writeFile("./docs/blog2.txt", "Hello! You will replace the text", (err, data) => {
+    if(err){
+      console.log(err)
+    }else{
+      console.log("Data writen success!")
+    }
+  })
