@@ -1,25 +1,19 @@
-const fs = require('fs');
+const http = require('http');
+const fs = require("fs");
 
-fs.readFile("./docs/blog1.txt", (err, data) => {
-    if (err) {
-        console.log("Error! Check the directory please!")
-    } else {
-        console.log(data.toString())
-    }
+const server = http.createServer((req, res) => {
+    res.setHeader("Content-Type", "text/html")
+    fs.readFile("./view/index.html", (error, data) => {
+        if (error) {
+            console.log(error)
+            res.end()
+        }
+        else {
+            res.write(data)
+            res.end()
+        }
+    })
 })
-
-fs.writeFile("./docs/blog1.txt", "Hello! You will replace the text", (err, data) => {
-  if(err){
-    console.log(err)
-  }else{
-    console.log("Data writen success!")
-  }
+server.listen(8000, "localhost", () => {
+    console.log("Server Created on port 8000")
 })
-
-fs.writeFile("./docs/blog2.txt", "Hello! You will replace the text", (err, data) => {
-    if(err){
-      console.log(err)
-    }else{
-      console.log("Data writen success!")
-    }
-  })
