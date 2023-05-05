@@ -1,19 +1,40 @@
-const http = require('http');
+const http = require("http");
 const fs = require("fs");
 
+
 const server = http.createServer((req, res) => {
-    res.setHeader("Content-Type", "text/html")
-    fs.readFile("./view/index.html", (error, data) => {
+    res.setHeader('Content-Type', 'text/html')
+    let path = './views/';
+
+    switch (req.url) {
+        case '/':
+            path += 'index.html'
+            res.statusCode = 200;
+            break;
+        case '/about':
+            path += 'about.html'
+            res.statusCode = 200;
+            break;
+        case '/about-me':
+            res.statusCode = 301;
+            res.setHeader('Location', '/about');
+            res.end()
+            break;
+        default:
+            res.statusCode = 404;
+            path += '404.html'
+    }
+
+    fs.readFile(path, (error, data) => {
         if (error) {
-            console.log(error)
-            res.end()
+            console.log("Error occured", error);
         }
-        else {
-            res.write(data)
-            res.end()
-        }
+        res.write(data);
+        res.end();
     })
+
 })
-server.listen(8000, "localhost", () => {
-    console.log("Server Created on port 8000")
+
+server.listen(8000, 'localhost', () => {
+    console.log("Communicate with our server on port 8000")
 })
