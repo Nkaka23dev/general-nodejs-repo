@@ -1,39 +1,18 @@
-const http = require("http");
-const fs = require("fs");
+const express = require('express');
 
-const server = http.createServer((req, res) => {
-    res.setHeader('Content-Type', 'text/html')
-    let path = './views/';
+const app = express();
 
-    switch (req.url) {
-        case '/':
-            path += 'index.html'
-            res.statusCode = 200;
-            break;
-        case '/about':
-            path += 'about.html'
-            res.statusCode = 200;
-            break;
-        case '/about-me':
-            res.statusCode = 301;
-            res.setHeader('Location', '/about');
-            res.end()
-            break;
-        default:
-            res.statusCode = 404;
-            path += '404.html'
-    }
-
-    fs.readFile(path, (error, data) => {
-        if (error) {
-            console.log("Error occured In teh terminal", error);
-        }
-        res.write(data);
-        res.end();
-    })
-
+app.get('/', (req, res) => {
+    res.sendFile('./views/index.html', { root: __dirname })
+})
+app.get('/about', (req, res) => {
+    res.sendFile('./views/about.html', { root: __dirname })
+})
+app.get('/about-us', (req, res) => {
+    res.redirect('/about')
+})
+app.use((req, res) => {
+    res.sendFile('./views/404.html', { root: __dirname })
 })
 
-server.listen(8000, 'localhost', () => {
-    console.log("Communicate with our server on port 8000")
-})
+app.listen(8000)
