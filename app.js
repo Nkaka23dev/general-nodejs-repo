@@ -1,7 +1,6 @@
 const http = require("http");
 const fs = require("fs");
 
-
 const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html')
     let path = './views/';
@@ -27,7 +26,7 @@ const server = http.createServer((req, res) => {
 
     fs.readFile(path, (error, data) => {
         if (error) {
-            console.log("Error occured", error);
+            console.log("Error occured In teh terminal", error);
         }
         res.write(data);
         res.end();
