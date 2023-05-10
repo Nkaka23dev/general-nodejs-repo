@@ -1,12 +1,36 @@
 const express = require('express');
-
+const mongoose = require('mongoose');
+const Blog = require('./models/blog')
 const app = express();
 
-app.set('view engine', 'ejs')
+const dbURL = 'mongodb+srv://nkakaeric:isheja1994@cluster0.uwu4q0a.mongodb.net/';
+
+app.set('view engine', 'ejs');
+
+mongoose.connect(dbURL).then((result) => {
+    app.listen(8000)
+}).catch(err => {
+    console.log("Got an error", err)
+})
 
 app.use(express.static('public'))
 // In case the ejs files are not in the folder called view you can set it.
 // app.set('views', 'myviews');
+
+app.use('/add-blog', (req, res) => {
+    const blog = new Blog({
+        title: "new blog",
+        snippet: "About my new blog",
+        body: "Blogs"
+    })
+    blog.save()
+        .then((result) => {
+            res.send(result);
+        }).catch(err => {
+            console.log(err)
+        })
+})
+
 app.use((req, res, next) => {
     console.log('Host Name', req.hostname);
     console.log('Method', req.method);
@@ -17,7 +41,6 @@ app.use((req, res, next) => {
     console.log("In the next middleware")
     next();
 })
-app.listen(8000)
 
 app.get('/', (req, res) => {
     const blogs = [
