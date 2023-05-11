@@ -19,8 +19,8 @@ app.use(express.static('public'))
 
 app.use('/add-blog', (req, res) => {
     const blog = new Blog({
-        title: "new blog",
-        snippet: "About my new blog",
+        title: "Onother blog is writen",
+        snippet: "hello There new blog",
         body: "Blogs"
     })
     blog.save()
@@ -29,8 +29,18 @@ app.use('/add-blog', (req, res) => {
         }).catch(err => {
             console.log(err)
         })
+});
+app.use('/get-all-blogs', (req, res) => {
+    Blog.find()
+        .then(response => {
+            res.send(response)
+        }).catch(err => console.log(err))
 })
-
+app.use('/single-blog', (req, res) => {
+    Blog.findById("645c1116f54ff81523563910").then(response => {
+        res.send(response)
+    }).catch(err => { console.log(err) })
+})
 app.use((req, res, next) => {
     console.log('Host Name', req.hostname);
     console.log('Method', req.method);
