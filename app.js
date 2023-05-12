@@ -12,21 +12,9 @@ mongoose.connect(dbURL).then((result) => {
 }).catch(err => {
     console.log("Got an error", err)
 })
-
 app.use(express.static('public'))
-// In case the ejs files are not in the folder called view you can set it.
-// app.set('views', 'myviews');
 
-app.use((req, res, next) => {
-    console.log('Host Name', req.hostname);
-    console.log('Method', req.method);
-    console.log('Path', req.path);
-    next();
-})
-app.use((req, res, next) => {
-    console.log("In the next middleware")
-    next();
-})
+app.use(express.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
     res.redirect("/blogs")
@@ -39,10 +27,9 @@ app.get('/blogs', (req, res) => {
         console.log(err)
     })
 })
-// app.post('/blog', (req, res) => {
-
-// });
-
+app.post('/blogs', (req, res) => {
+  console.log(req.body)
+});
 app.get('/about', (req, res) => {
     res.render('about', { title: "About" })
 })
@@ -54,4 +41,6 @@ app.get('/blogs/create', (req, res) => {
 })
 app.use((req, res) => {
     res.render('404', { title: "404 not found" })
-});  
+});   
+
+
