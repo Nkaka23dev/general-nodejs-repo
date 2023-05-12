@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 })
 app.use((req, res, next) => {
     console.log("In the next middleware")
-    next(); 
+    next();
 })
 
 app.get('/', (req, res) => {
@@ -39,6 +39,10 @@ app.get('/blogs', (req, res) => {
         console.log(err)
     })
 })
+// app.post('/blog', (req, res) => {
+
+// });
+
 app.get('/about', (req, res) => {
     res.render('about', { title: "About" })
 })
