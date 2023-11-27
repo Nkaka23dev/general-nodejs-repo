@@ -1,24 +1,34 @@
-// function medianOfArray(arr) {
-//   const length = arr.length;
-//   if (length % 2 === 1) {
-//     const median = arr[Math.floor(length / 2)];
-//     return median;
-//   } else {
-//     const median = (arr[length / 2] + arr[length / 2 - 1]) / 2;
-//     return median;
-//   }
-// }
-// const arr = [1, 2, 3, 4, 6];
-
-// console.log(medianOfArray(arr));
-
-let hashMap = {
-  1: 1,
-  5: 6,
-  10: 3,
-  3: 1,
-};
-
-for (var prop in hashMap) {
-  console.log(hashMap[prop]);
+function commonElements(kArray) {
+  let hashMap = {},
+    last,
+    answer = [];
+  for (let i = 0, kArrarLength = kArray.length; i < kArrarLength; i++) {
+    let currentArray = kArray[i];
+    last = null;
+    for (let j = 0, innerArray = currentArray.length; j < innerArray; j++) {
+      currentElement = currentArray[j];
+      if (last !== currentElement) {
+        if (!hashMap[currentElement]) {
+          hashMap[currentElement] = 1;
+        } else {
+          hashMap[currentElement]++;
+        }
+      }
+      last = currentElement;
+    }
+  }
+  for (let element in hashMap) {
+    if (hashMap[element] === kArray.length) {
+      answer.push(element);
+    }
+  }
+  return answer;
 }
+
+console.log(
+  commonElements([
+    [5, 5, 10, 20],
+    [3, 4, 5, 5, 10],
+    [5, 5, 10, 20],
+  ])
+);
