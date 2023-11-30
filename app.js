@@ -1,33 +1,29 @@
-function getById(id) {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      console.log(`got id ${id}`);
-      resolve(id);
-    }, 2000);
-  });
-}
+const values = [10, 20, 30, 40, 50];
 
-// arr.forEach((value) => {
-//   getById(value);
-// });
+// let sum = 0;
 
-// (async function () {
-//   const arr = [4, 5, 6, 7, 8, 4, 3];
-//   //   for (let id of arr) {
-//   //     await getById(id);
+// for (let value of values) {
+//   sum += value;
+// }
 
-//   arr.forEach((value) => {
-//     getById(value);
-//   });
-// })();
+// console.log(sum);
 
-//Reason sometimes we do not use forEach is that  you can not break out of it and for async function it bring everything at the same time
+// const sum = values.reduce((sum, value, index, arr) => (sum += value), 0);
+// console.log(sum);
 
-const names = ["Alice", "Bob", "Tiff", "Bruce", "Alice"];
+// const avg = values.reduce(
+//   (avg, value, _, arr) => (avg += value / arr.length),
+//   0
+// );
+// console.log(avg);
 
-console.log(names.lastIndexOf("Alice"));
-console.log(names.find((name) => name === "Bob"));
+const arrOfStr = ["Nkaka", "Clever", "Yvette", "Christella"];
 
-const arr = [4, 5, 6, 7, 8, 4, 3];
+// const joinedName = arrOfStr.reduce(
+//   (str, value, index) => str + (index > 0 ? "," : "") + value,
+//   ""
+// );
 
-console.log(arr.some((num) => num < 4));
+// console.log(joinedName);
+
+// console.log(arrOfStr.join(",").split(","));
