@@ -4,30 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Parse XML data using DOM Parser</title>
 </head>
 
 <body>
-    <h1>DOM CONTENT IS RIGHT HERE</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga iure ipsa ut saepe pariatur
-        et porro? Autem, magni voluptatibus? Fuga aliquam ea laborum nam a culpa vitae beatae eius
-        vero inventore, suscipit hic rem recusandae, repellendus eveniet dolorem id error!</h1>
-
-    <!-- This is about sending data to the sever with a link(Anchor link) -->
-    <!-- <a href="main.php?name=Eric nkaka">Click this link for data</a> -->
-    <!-- Sending the data using form(we can use GET or POST methods) -->
-    <form method="POST" action="main.php"
-        style="max-width: 40rem; margin-right:auto; margin-left: auto; background-color: skyblue;">
-        <h1 style="padding-inline: 30px;">Send the data</h1>
-        <div>
-            <input style="width: 100%; padding-block: 10px;" type="text" name="name" id="name">
-        </div>
-        <div style="margin-top: 20px;">
-            <button style="cursor: pointer;">Submit</button>
-        </div>
-    </form>
+    <h1 style="font-size: 24px;">The data we will get:</h1>
+    <div>
+        <p style="font-size: 18px;">Animal Type: <span id="type"
+                style="color: red; font-weight: 700;"></span></p>
+        <p style="font-size: 18px;">Animal Sound: <span id="sound"
+                style="color: red; font-weight: 700;"></span></p>
+    </div>
     <script>
-        document.cookie = "name=EricNkaka!"
+        let animalXMLData = `<animal> <type>Dog</type><sounds>Woof</sounds></animal>`;
+        let XMLParser = new DOMParser();
+        let animalXML = XMLParser.parseFromString(animalXMLData, 'text/xml');
+        let animalData = animalXML.getElementsByTagName('animal')[0];
+        let animalName = animalData.children[0].textContent;
+        let animalSound = animalData.children[1].textContent;
+        document.getElementById('type').textContent = animalName;
+        document.getElementById('sound').textContent = animalSound;
     </script>
 </body>
 
