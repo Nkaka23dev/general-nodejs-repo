@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing XML</title>
+</head>
+
+<body>
+    <div>
+        <h1>This is the heading of getting my XML</h1>
+        <div>
+            <p>Animal: <span id="type"></span></p>
+            <p>Sounds: <span id="sound"></span></p>
+        </div>
+    </div>
+    <script>
+        const myXLM = `<animal>
+<type>Dog</type>
+<sound>Burking</sound>
+</animal>`
+        const animalsXML = new DOMParser();
+        const animalXMLSTring = animalsXML.parseFromString(myXLM, 'text/xml');
+        const animalElement = animalXMLSTring.getElementsByTagName('animal')[0];
+        const type = animalElement.children[0].textContent
+        const sound = animalElement.children[1].textContent
+        document.getElementById('type').textContent = type
+        document.getElementById('sound').textContent = sound
+    </script>
+</body>
+
+</html>
