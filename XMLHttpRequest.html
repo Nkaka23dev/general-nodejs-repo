@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loaded</title>
+</head>
+
+<body>
+    <div>
+        <h1>This a XMLHttp Request we will have here</h1>
+        <button onclick="loadMessage()">Load the data</button>
+        <div id="dataLoad"></div>
+    </div>
+    <script>
+        function loadMessage() {
+            const xhr = new XMLHttpRequest()
+            xhr.open('GET', 'message.txt', true)
+            xhr.onload = function () {
+                document.getElementById('dataLoad').innerHTML = this.responseText;
+            }
+            xhr.send()
+        }
+    </script>
+</body>
+
+</html>

@@ -8,26 +8,31 @@
 </head>
 
 <body>
-    <h1>DOM CONTENT IS RIGHT HERE</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga iure ipsa ut saepe pariatur
-        et porro? Autem, magni voluptatibus? Fuga aliquam ea laborum nam a culpa vitae beatae eius
-        vero inventore, suscipit hic rem recusandae, repellendus eveniet dolorem id error!</h1>
+    <div id="nkaka">
+        <h1 id="header">DOM CONTENT IS RIGHT HERE</h1>
+        <h1 class="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga iure ipsa ut
+            saepe pariatur
+            et porro? Autem, magni voluptatibus? Fuga aliquam ea laborum nam a culpa vitae beatae
+            eius
+            vero inventore, suscipit hic rem recusandae, repellendus eveniet dolorem id error!</h1>
+        <h1 class="para">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga iure ipsa ut
+            saepe pariatur
+            et porro? Autem, magni voluptatibus? Fuga aliquam ea laborum nam a culpa vitae beatae
+            eius
+            vero inventore, suscipit hic rem recusandae, repellendus eveniet dolorem id error!</h1>
+        <button onclick="openWindow()" type="button" style="cursor: pointer;">click Me!</button>
+        <form action="">
+            <a href="mailto:nkakaeric96@gmail.com">Send Email</a>
+        </form>
+    </div>
 
-    <!-- This is about sending data to the sever with a link(Anchor link) -->
-    <!-- <a href="main.php?name=Eric nkaka">Click this link for data</a> -->
-    <!-- Sending the data using form(we can use GET or POST methods) -->
-    <form method="POST" action="main.php"
-        style="max-width: 40rem; margin-right:auto; margin-left: auto; background-color: skyblue;">
-        <h1 style="padding-inline: 30px;">Send the data</h1>
-        <div>
-            <input style="width: 100%; padding-block: 10px;" type="text" name="name" id="name">
-        </div>
-        <div style="margin-top: 20px;">
-            <button style="cursor: pointer;">Submit</button>
-        </div>
-    </form>
     <script>
-        document.cookie = "name=EricNkaka!"
+        function openWindow() {
+            let url = 'https://www.youtube.com/leelawebdev'
+            window.open(url, '', 'width=500height=300')
+        }
+        const header = document.querySelectorAll('#nkaka');
+        console.dir(header)
     </script>
 </body>
 
