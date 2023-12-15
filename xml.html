@@ -27,6 +27,22 @@
         const sound = animalElement.children[1].textContent
         document.getElementById('type').textContent = type
         document.getElementById('sound').textContent = sound
+
+
+        someone = { name: 'Nkaka' };
+
+        function sayHi(person) {
+            const name = person.name;
+            setTimeout(() => {
+                alert("Hello " + name)
+            }, 3000)
+        }
+
+
+        sayHi(someone);
+        sayHi(someone);
+        sayHi(someone);
+
     </script>
 </body>
 
