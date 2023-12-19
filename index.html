@@ -5,24 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- <style>
+        * {
+            border: 2px solid #dedede;
+            padding: 15px;
+            margin: 15px;
+            border-radius: 10px;
+        }
+    </style> -->
 </head>
 
 <body>
-    <h1>DOM CONTENT IS RIGHT HERE</h1>
-    <h1>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga iure ipsa ut saepe pariatur
-        et porro? Autem, magni voluptatibus? Fuga aliquam ea laborum nam a culpa vitae beatae eius
-        vero inventore, suscipit hic rem recusandae, repellendus eveniet dolorem id error!</h1>
-    <button onclick="openWindow()" type="button" style="cursor: pointer;">click Me!</button>
-    <form action="">
-        <a href="mailto:nkakaeric96@gmail.com">Send Email</a>
-    </form>
+    <p>Hello There</p>
+    <span>Hello There</span>
+    <p>Hello There</p>
 
-    <script>
-        function openWindow() {
-            let url = 'https://www.youtube.com/leelawebdev'
-            window.open(url, '', 'width=500height=300')
-        }
-    </script>
 </body>
+<script>
+    const para = document.createElement('h1');
+    para.innerHTML = `<span>Here Nakak Eeric</span>  `
+    const b = document.querySelector('body')
+    b.insertBefore(para, document.querySelector('span'))
+    para.remove(para)
+</script>
 
 </html>
